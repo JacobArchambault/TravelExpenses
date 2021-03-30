@@ -68,9 +68,16 @@ public class App extends Application {
 																		Double
 																				.toString(
 																						new Expenses(
-																								new Expense(airFare),
-																								new Expense(carRental))
-																										.add())))))));
+																								new BasicExpense(
+																										airFare),
+																								new BasicExpense(
+																										carRental),
+																								new BasicExpense(
+																										parking),
+																								new BasicExpense(taxi),
+																								new BasicExpense(
+																										registration))
+																												.add())))))));
 		primaryStage.show();
 	}
 

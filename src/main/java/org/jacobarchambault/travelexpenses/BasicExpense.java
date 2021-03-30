@@ -2,11 +2,11 @@ package org.jacobarchambault.travelexpenses;
 
 import javafx.scene.control.TextField;
 
-public class Expense {
+public class BasicExpense {
 
 	TextField tf;
 
-	Expense(TextField tf) {
+	BasicExpense(TextField tf) {
 		this.tf = tf;
 	}
 
