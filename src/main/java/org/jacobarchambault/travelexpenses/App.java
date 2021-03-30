@@ -17,6 +17,7 @@ public class App extends Application {
 	TextField airFare = new TextField();
 	TextField carRental = new TextField();
 	Label outputLabel = new Label();
+	Label expensesLabel = new Label();
 
 	TextField milesDriven = new TextField();
 
@@ -50,7 +51,7 @@ public class App extends Application {
 												new Label("Allowable expenses: "),
 												new Label("Excess expenses: "),
 												new Label("Saved expenses: "),
-												new Label(),
+												expensesLabel, 
 												new Label(),
 												new Label(),
 												new Label()),
