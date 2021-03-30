@@ -64,9 +64,7 @@ public class App extends Application {
 												new EventButton(
 														"Calculate",
 														e -> totalExpensesLabel
-																.setText(
-																		airFare.getText() + ", "
-																				+ tripDays.getText()))))));
+																.setText(Double.toString(Airfare.amount(airFare))))))));
 		primaryStage.show();
 	}
 
