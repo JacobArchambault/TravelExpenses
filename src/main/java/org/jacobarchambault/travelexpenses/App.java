@@ -16,8 +16,12 @@ public class App extends Application {
 	TextField tripDays = new TextField();
 	TextField airFare = new TextField();
 	TextField carRental = new TextField();
-	Label outputLabel = new Label();
-	Label expensesLabel = new Label();
+	TextField outputLabel = new Label();
+	Label totalExpensesLabel = new Label();
+	TextField parking = new TextField();
+	TextField taxi = new TextField();
+	TextField registration = new TextField();
+	TextField lodging = new TextField();
 
 	TextField milesDriven = new TextField();
 
@@ -42,16 +46,16 @@ public class App extends Application {
 												airFare,
 												carRental,
 												milesDriven,
-												new TextField(),
-												new TextField(),
-												new TextField(),
-												new TextField()),
+												parking,
+												taxi,
+												registration,
+												lodging),
 										new LabelGrid(
 												new Label("Total expenses: "),
 												new Label("Allowable expenses: "),
 												new Label("Excess expenses: "),
 												new Label("Saved expenses: "),
-												expensesLabel, 
+												totalExpensesLabel,
 												new Label(),
 												new Label(),
 												new Label()),
