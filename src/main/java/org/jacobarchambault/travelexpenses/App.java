@@ -16,14 +16,15 @@ public class App extends Application {
 	TextField tripDays = new TextField();
 	TextField airFare = new TextField();
 	TextField carRental = new TextField();
-	TextField outputLabel = new Label();
-	Label totalExpensesLabel = new Label();
+	TextField milesDriven = new TextField();
 	TextField parking = new TextField();
 	TextField taxi = new TextField();
 	TextField registration = new TextField();
 	TextField lodging = new TextField();
 
-	TextField milesDriven = new TextField();
+	Label totalExpensesLabel = new Label();
+
+	TextField outputLabel = new TextField();
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
