@@ -76,7 +76,10 @@ public class App extends Application {
 																										parking),
 																								new BasicExpense(taxi),
 																								new BasicExpense(
-																										registration))
+																										registration),
+																								new DailyExpense(
+																										tripDays,
+																										lodging))
 																												.add())))))));
 		primaryStage.show();
 	}
