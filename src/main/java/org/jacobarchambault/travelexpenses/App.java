@@ -76,10 +76,10 @@ public class App extends Application {
 																		airFare.getText() + ", "
 																				+ tripDays.getText()))),
 										new LabelGrid(
-												new Label("Days on the trip: "),
-												new Label("Airfare: "),
-												new Label("Car Rental: "),
-												new Label("Miles Driven: "),
+												new Label("Total expenses: "),
+												new Label("Allowable expenses: "),
+												new Label("Excess expenses: "),
+												new Label("Saved expenses: "),
 												new Label(),
 												new Label(),
 												new Label(),
