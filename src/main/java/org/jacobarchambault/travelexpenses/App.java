@@ -63,7 +63,7 @@ public class App extends Application {
 										new HBox(
 												new EventButton(
 														"Calculate",
-														e -> outputLabel
+														e -> totalExpensesLabel
 																.setText(
 																		airFare.getText() + ", "
 																				+ tripDays.getText()))))));
