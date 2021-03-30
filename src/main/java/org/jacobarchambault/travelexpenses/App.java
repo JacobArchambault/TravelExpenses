@@ -37,44 +37,6 @@ public class App extends Application {
 												airFare,
 												carRental,
 												milesDriven),
-										new HBox(
-												10,
-												new EventButton(
-														"Format 1",
-														e -> outputLabel
-																.setText(
-																		milesDriven.getText() + " " + tripDays.getText()
-																				+ " " + carRental.getText() + " "
-																				+ airFare.getText())),
-												new EventButton(
-														"Format 2",
-														e -> outputLabel
-																.setText(
-																		tripDays.getText() + " " + carRental.getText()
-																				+ " " + airFare.getText())),
-												new EventButton(
-														"Format 3",
-														e -> outputLabel
-																.setText(tripDays.getText() + " " + airFare.getText())),
-												new EventButton(
-														"Format 4",
-														e -> outputLabel
-																.setText(
-																		airFare.getText() + ", " + tripDays.getText()
-																				+ " " + carRental.getText() + ", "
-																				+ milesDriven.getText())),
-												new EventButton(
-														"Format 5",
-														e -> outputLabel
-																.setText(
-																		airFare.getText() + ", " + tripDays.getText()
-																				+ " " + carRental.getText())),
-												new EventButton(
-														"Format 6",
-														e -> outputLabel
-																.setText(
-																		airFare.getText() + ", "
-																				+ tripDays.getText()))),
 										new LabelGrid(
 												new Label("Total expenses: "),
 												new Label("Allowable expenses: "),
@@ -84,7 +46,13 @@ public class App extends Application {
 												new Label(),
 												new Label(),
 												new Label()),
-										new HBox(outputLabel))));
+										new HBox(
+												new EventButton(
+														"Format 6",
+														e -> outputLabel
+																.setText(
+																		airFare.getText() + ", "
+																				+ tripDays.getText()))))));
 		primaryStage.show();
 	}
 
