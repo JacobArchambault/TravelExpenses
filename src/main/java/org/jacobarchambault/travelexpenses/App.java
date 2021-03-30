@@ -33,10 +33,18 @@ public class App extends Application {
 												new Label("Airfare: "),
 												new Label("Car Rental: "),
 												new Label("Miles Driven: "),
+												new Label("Parking fees: "),
+												new Label("Taxi fees: "),
+												new Label("Registration: "),
+												new Label("Nightly lodging: "),
 												tripDays,
 												airFare,
 												carRental,
-												milesDriven),
+												milesDriven,
+												new TextField(),
+												new TextField(),
+												new TextField(),
+												new TextField()),
 										new LabelGrid(
 												new Label("Total expenses: "),
 												new Label("Allowable expenses: "),
@@ -48,7 +56,7 @@ public class App extends Application {
 												new Label()),
 										new HBox(
 												new EventButton(
-														"Format 6",
+														"Calculate",
 														e -> outputLabel
 																.setText(
 																		airFare.getText() + ", "
