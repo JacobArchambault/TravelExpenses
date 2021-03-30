@@ -64,7 +64,13 @@ public class App extends Application {
 												new EventButton(
 														"Calculate",
 														e -> totalExpensesLabel
-																.setText(Double.toString(Airfare.amount(airFare))))))));
+																.setText(
+																		Double
+																				.toString(
+																						new Expenses(
+																								new Expense(airFare),
+																								new Expense(carRental))
+																										.add())))))));
 		primaryStage.show();
 	}
 
