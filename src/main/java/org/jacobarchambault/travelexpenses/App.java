@@ -13,12 +13,12 @@ public class App extends Application {
 		Application.launch(args);
 	}
 
-	TextField fnTextField = new TextField();
-	TextField lnTextField = new TextField();
-	TextField mnTextField = new TextField();
+	TextField tripDays = new TextField();
+	TextField airFare = new TextField();
+	TextField carRental = new TextField();
 	Label outputLabel = new Label();
 
-	TextField tTextField = new TextField();
+	TextField milesDriven = new TextField();
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -29,58 +29,61 @@ public class App extends Application {
 										10,
 										new Insets(10),
 										new TextLabelGrid(
-												new Label("First Name: "),
-												new Label("Middle Name: "),
-												new Label("Last Name: "),
-												new Label("Title: "),
-												fnTextField,
-												mnTextField,
-												lnTextField,
-												tTextField),
+												new Label("Days on the trip: "),
+												new Label("Airfare: "),
+												new Label("Car Rental: "),
+												new Label("Miles Driven: "),
+												tripDays,
+												airFare,
+												carRental,
+												milesDriven),
 										new HBox(
 												10,
 												new EventButton(
 														"Format 1",
 														e -> outputLabel
 																.setText(
-																		tTextField.getText() + " "
-																				+ fnTextField.getText() + " "
-																				+ mnTextField.getText() + " "
-																				+ lnTextField.getText())),
+																		milesDriven.getText() + " " + tripDays.getText()
+																				+ " " + carRental.getText() + " "
+																				+ airFare.getText())),
 												new EventButton(
 														"Format 2",
 														e -> outputLabel
 																.setText(
-																		fnTextField.getText() + " "
-																				+ mnTextField.getText() + " "
-																				+ lnTextField.getText())),
+																		tripDays.getText() + " " + carRental.getText()
+																				+ " " + airFare.getText())),
 												new EventButton(
 														"Format 3",
 														e -> outputLabel
-																.setText(
-																		fnTextField.getText() + " "
-																				+ lnTextField.getText())),
+																.setText(tripDays.getText() + " " + airFare.getText())),
 												new EventButton(
 														"Format 4",
 														e -> outputLabel
 																.setText(
-																		lnTextField.getText() + ", "
-																				+ fnTextField.getText() + " "
-																				+ mnTextField.getText() + ", "
-																				+ tTextField.getText())),
+																		airFare.getText() + ", " + tripDays.getText()
+																				+ " " + carRental.getText() + ", "
+																				+ milesDriven.getText())),
 												new EventButton(
 														"Format 5",
 														e -> outputLabel
 																.setText(
-																		lnTextField.getText() + ", "
-																				+ fnTextField.getText() + " "
-																				+ mnTextField.getText())),
+																		airFare.getText() + ", " + tripDays.getText()
+																				+ " " + carRental.getText())),
 												new EventButton(
 														"Format 6",
 														e -> outputLabel
 																.setText(
-																		lnTextField.getText() + ", "
-																				+ fnTextField.getText()))),
+																		airFare.getText() + ", "
+																				+ tripDays.getText()))),
+										new LabelGrid(
+												new Label("Days on the trip: "),
+												new Label("Airfare: "),
+												new Label("Car Rental: "),
+												new Label("Miles Driven: "),
+												new Label(),
+												new Label(),
+												new Label(),
+												new Label()),
 										new HBox(outputLabel))));
 		primaryStage.show();
 	}
