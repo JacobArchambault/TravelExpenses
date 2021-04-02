@@ -14,7 +14,11 @@ public class DailyExpense implements Expense {
 
 	@Override
 	public double amount() {
-		return Double.parseDouble(daysField.getText()) * Double.parseDouble(dailyAmountField.getText());
+		try {
+			return Double.parseDouble(daysField.getText()) * Double.parseDouble(dailyAmountField.getText());			
+		} catch(Exception ex) {
+			return 0;
+		}
 	}
 
 }

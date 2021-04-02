@@ -13,14 +13,19 @@ public class App extends Application {
 		Application.launch(args);
 	}
 
+	// Fully covered expenses
+	
+	// Partially covered expenses
+	TextField parking = new TextField();
+	TextField taxi = new TextField();
+	TextField lodging = new TextField();
+
+	TextField milesDriven = new TextField();
+
 	TextField tripDays = new TextField();
 	TextField airFare = new TextField();
 	TextField carRental = new TextField();
-	TextField milesDriven = new TextField();
-	TextField parking = new TextField();
-	TextField taxi = new TextField();
 	TextField registration = new TextField();
-	TextField lodging = new TextField();
 
 	Label totalExpensesLabel = new Label();
 
