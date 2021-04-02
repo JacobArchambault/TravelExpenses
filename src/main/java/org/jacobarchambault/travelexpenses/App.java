@@ -16,16 +16,16 @@ public class App extends Application {
 	// Fully covered expenses
 	
 	// Partially covered expenses
-	TextField parking = new TextField();
-	TextField taxi = new TextField();
-	TextField lodging = new TextField();
+	NumberInput parking = new NumberInput();
+	NumberInput taxi = new NumberInput();
+	NumberInput lodging = new NumberInput();
+ 
+	NumberInput milesDriven = new NumberInput();
 
-	TextField milesDriven = new TextField();
-
-	TextField tripDays = new TextField();
-	TextField airFare = new TextField();
-	TextField carRental = new TextField();
-	TextField registration = new TextField();
+	NumberInput tripDays = new NumberInput();
+	NumberInput airFare = new NumberInput();
+	NumberInput carRental = new NumberInput();
+	NumberInput registration = new NumberInput();
 
 	Label totalExpensesLabel = new Label();
 
