@@ -30,7 +30,6 @@ public class App extends Application {
 	Label totalExpensesLabel = new Label();
 
 	TextField outputLabel = new TextField();
-	Label milesDrivenLabel = new Label("Total miles driven: ");
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -62,6 +61,11 @@ public class App extends Application {
 														taxi,
 														new Label("Nightly lodging (up to $195 per day): "),
 														lodging)),
+										new TitledPane(
+												"Gas mileage reimbursement",
+												new HBox(
+														new Label("Total miles driven: ($.40 reimbursed per mile): "),
+														milesDriven)),
 										new LabelGrid(
 												new Label("Total expenses: "),
 												new Label("Allowable expenses: "),
