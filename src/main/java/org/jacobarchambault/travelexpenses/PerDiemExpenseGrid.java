@@ -9,16 +9,16 @@ public class PerDiemExpenseGrid extends GridPane {
 
 	PerDiemExpenseGrid(
 			final Label l1,
-			final Label l2,
-			final Label l3,
-			final Label l4,
-			Label l5,
-			Label l6,
 			final TextField tf1,
+			final Label l2,
 			final TextField tf2,
+			final Label l3,
 			final TextField tf3,
+			final Label l4,
 			final TextField tf4,
+			final Label l5,
 			final TextField tf5,
+			final Label l6,
 			final TextField tf6) {
 		add(l1, 0, 0);
 		add(l2, 0, 1);
