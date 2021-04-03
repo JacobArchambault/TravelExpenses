@@ -49,7 +49,7 @@ public class App extends Application {
 														carRental)),
 										new TitledPane(
 												"Per diem expenses",
-												new TextLabelGrid(
+												new PerDiemExpenseGrid(
 														new Label("Days on the trip: "),
 														new Label("Miles Driven: "),
 														new Label("Parking fees: "),

@@ -5,9 +5,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
-public class TextLabelGrid extends GridPane {
+public class PerDiemExpenseGrid extends GridPane {
 
-	TextLabelGrid(
+	PerDiemExpenseGrid(
 			final Label l1,
 			final Label l2,
 			final Label l3,
