@@ -15,22 +15,22 @@ public class App extends Application {
 	}
 
 	// Fully covered expenses
+	NumberInput airFare = new NumberInput();
+	NumberInput carRental = new NumberInput();
+	NumberInput registration = new NumberInput();
 
-	// Partially covered expenses
+	NumberInput tripDays = new NumberInput();
+	// Per diem expenses
 	NumberInput parking = new NumberInput();
 	NumberInput taxi = new NumberInput();
 	NumberInput lodging = new NumberInput();
 
 	NumberInput milesDriven = new NumberInput();
 
-	NumberInput tripDays = new NumberInput();
-	NumberInput airFare = new NumberInput();
-	NumberInput carRental = new NumberInput();
-	NumberInput registration = new NumberInput();
-
 	Label totalExpensesLabel = new Label();
 
 	TextField outputLabel = new TextField();
+	Label milesDrivenLabel = new Label("Total miles driven: ");
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -46,7 +46,7 @@ public class App extends Application {
 														new Label("Airfare: "),
 														airFare,
 														new Label("Car Rental: "),
-														carRental, 
+														carRental,
 														new Label("Registration: "),
 														registration)),
 										new TitledPane(
@@ -54,13 +54,13 @@ public class App extends Application {
 												new PerDiemExpenseGrid(
 														new Label("Days on the trip: "),
 														tripDays,
-														new Label("Total miles driven: "),
-														milesDriven,
-														new Label("Total parking fees: "),
+														new Label("Meals (up to $47 per day): "),
+														new TextField(),
+														new Label("Total parking fees (up to $20 per day): "),
 														parking,
-														new Label("Total taxi fees: "),
+														new Label("Total taxi fees (up to $40 per day): "),
 														taxi,
-														new Label("Nightly lodging: "),
+														new Label("Nightly lodging (up to $195 per day): "),
 														lodging)),
 										new LabelGrid(
 												new Label("Total expenses: "),
