@@ -86,6 +86,7 @@ public class App extends Application {
 																										tripDays,
 																										lodging))
 																												.add())))))));
+		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
 
