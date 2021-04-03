@@ -42,23 +42,11 @@ public class App extends Application {
 										new Insets(10),
 										new TitledPane(
 												"One-time expenses: ",
-												new TextLabelGrid(
-														new Label("Days on the trip: "),
+												new MainExpensesGrid(
 														new Label("Airfare: "),
-														new Label("Car Rental: "),
-														new Label("Miles Driven: "),
-														new Label("Parking fees: "),
-														new Label("Taxi fees: "),
-														new Label("Registration: "),
-														new Label("Nightly lodging: "),
-														tripDays,
 														airFare,
-														carRental,
-														milesDriven,
-														parking,
-														taxi,
-														registration,
-														lodging)),
+														new Label("Car Rental: "),
+														carRental)),
 										new TitledPane(
 												"Per diem expenses",
 												new TextLabelGrid(
@@ -71,8 +59,8 @@ public class App extends Application {
 														new Label("Registration: "),
 														new Label("Nightly lodging: "),
 														tripDays,
-														airFare,
-														carRental,
+														new TextField(),
+														new TextField(),
 														milesDriven,
 														parking,
 														taxi,
