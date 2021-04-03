@@ -17,21 +17,17 @@ public class PerDiemExpenseGrid extends GridPane {
 			final Label l4,
 			final TextField tf4,
 			final Label l5,
-			final TextField tf5,
-			final Label l6,
-			final TextField tf6) {
+			final TextField tf5) {
 		add(l1, 0, 0);
 		add(l2, 0, 1);
 		add(l3, 0, 2);
 		add(l4, 0, 3);
 		add(l5, 0, 4);
-		add(l6, 0, 5);
 		add(tf1, 1, 0);
 		add(tf2, 1, 1);
 		add(tf3, 1, 2);
 		add(tf4, 1, 3);
 		add(tf5, 1, 4);
-		add(tf6, 1, 5);
 		setVgap(10);
 		setCenterShape(true);
 		setAlignment(Pos.CENTER);
