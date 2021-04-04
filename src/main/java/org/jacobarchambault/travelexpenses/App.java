@@ -28,6 +28,7 @@ public class App extends Application {
 	NumberInput milesDriven = new NumberInput();
 
 	Label totalExpensesLabel = new Label();
+	Label mainExpenseOutput = new Label("$0.00");
 
 	TextField outputLabel = new TextField();
 
@@ -49,7 +50,7 @@ public class App extends Application {
 														new Label("Registration: "),
 														registration,
 														new Label("Subtotal"),
-														new Label("$0.00"))),
+														mainExpenseOutput)),
 										new TitledPane(
 												"Per diem expenses",
 												new PerDiemExpenseGrid(

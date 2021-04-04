@@ -1,13 +1,20 @@
 package org.jacobarchambault.travelexpenses;
 
 import javafx.geometry.Pos;
-import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 public class MainExpensesGrid extends GridPane {
+	TextField textBox;
+	TextField textBox2;
+	TextField textBox3;
+	Label subtotal;
 	MainExpensesGrid(Label label, TextField textBox, Label label2, TextField textBox2, Label label3, TextField textBox3, Label subtotalLabel, Label subtotal) {
+		this.textBox = textBox;
+		this.textBox2 = textBox2;
+		this.textBox3 = textBox3;
+		this.subtotal = subtotal;
 		add(label, 0, 0);
 		add(textBox, 1, 0);
 		add(label2, 0, 1);
@@ -19,6 +26,9 @@ public class MainExpensesGrid extends GridPane {
 		setVgap(10);
 		setCenterShape(true);
 		setAlignment(Pos.CENTER);
+		textBox.textProperty().addListener((observable, oldValue, newValue) -> {
+			subtotal.setText(newValue);
+		});
 	}
 
 }
