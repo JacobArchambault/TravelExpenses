@@ -47,7 +47,9 @@ public class App extends Application {
 														new Label("Car Rental: "),
 														carRental,
 														new Label("Registration: "),
-														registration)),
+														registration,
+														new Label("Subtotal"),
+														new Label("$0.00"))),
 										new TitledPane(
 												"Per diem expenses",
 												new PerDiemExpenseGrid(
