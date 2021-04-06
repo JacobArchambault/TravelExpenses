@@ -17,7 +17,7 @@ public class PerDiemExpenseGrid extends GridPane {
 			final Label l4,
 			final TextField tf4,
 			final Label l5,
-			final TextField tf5) {
+			final TextField tf5, EventButton eventButton, Label label) {
 		add(l1, 0, 0);
 		add(l2, 0, 1);
 		add(l3, 0, 2);
@@ -28,6 +28,8 @@ public class PerDiemExpenseGrid extends GridPane {
 		add(tf3, 1, 2);
 		add(tf4, 1, 3);
 		add(tf5, 1, 4);
+		add(eventButton, 0, 5);
+		add(label, 1, 5);
 		setVgap(10);
 		setCenterShape(true);
 		setAlignment(Pos.CENTER);

@@ -23,6 +23,7 @@ public class App extends Application {
 
 	NumberInput tripDays = new NumberInput();
 	// Per diem expenses
+	NumberInput meals = new NumberInput();
 	NumberInput parking = new NumberInput();
 	NumberInput taxi = new NumberInput();
 	NumberInput lodging = new NumberInput();
@@ -51,9 +52,7 @@ public class App extends Application {
 														carRental,
 														new Label("Registration: "),
 														registration,
-														new EventButton(
-																"Calculate Subtotal",
-																e -> subtotal()),
+														new EventButton("Calculate Subtotal", e -> subtotal()),
 														mainExpenseOutput)),
 										new TitledPane(
 												"Per diem expenses",
@@ -61,13 +60,13 @@ public class App extends Application {
 														new Label("Days on the trip: "),
 														tripDays,
 														new Label("Meals (up to $47 per day): "),
-														new TextField(),
+														meals,
 														new Label("Total parking fees (up to $20 per day): "),
 														parking,
 														new Label("Total taxi fees (up to $40 per day): "),
 														taxi,
 														new Label("Nightly lodging (up to $195 per day): "),
-														lodging)),
+														lodging, new EventButton("Calculate subtotal", e -> subtotal()), new Label("$0.00"))),
 										new TitledPane(
 												"Gas mileage reimbursement",
 												new HBox(
@@ -108,23 +107,12 @@ public class App extends Application {
 	}
 
 	private void subtotal() {
-		mainExpenseOutput
-				.setText(
-						NumberFormat
-								.getCurrencyInstance()
-								.format(
-										Integer
-												.parseInt(
-														airFare
-																.getText())
-												+ Integer
-														.parseInt(
-																carRental
-																		.getText())
-												+ Integer
-														.parseInt(
-																registration
-																		.getText())));
+		mainExpenseOutput.setText(NumberFormat.getCurrencyInstance().format(parseTexFieldInput()));
+	}
+
+	private int parseTexFieldInput() {
+		return Integer.parseInt(airFare.getText()) + Integer.parseInt(carRental.getText())
+				+ Integer.parseInt(registration.getText());
 	}
 
 }
