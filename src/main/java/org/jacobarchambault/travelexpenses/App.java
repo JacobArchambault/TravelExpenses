@@ -1,5 +1,7 @@
 package org.jacobarchambault.travelexpenses;
 
+import java.text.NumberFormat;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -49,7 +51,9 @@ public class App extends Application {
 														carRental,
 														new Label("Registration: "),
 														registration,
-														new Label("Subtotal"),
+														new EventButton(
+																"Calculate Subtotal",
+																e -> subtotal()),
 														mainExpenseOutput)),
 										new TitledPane(
 												"Per diem expenses",
@@ -101,6 +105,26 @@ public class App extends Application {
 																												.add())))))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
+	}
+
+	private void subtotal() {
+		mainExpenseOutput
+				.setText(
+						NumberFormat
+								.getCurrencyInstance()
+								.format(
+										Integer
+												.parseInt(
+														airFare
+																.getText())
+												+ Integer
+														.parseInt(
+																carRental
+																		.getText())
+												+ Integer
+														.parseInt(
+																registration
+																		.getText())));
 	}
 
 }
