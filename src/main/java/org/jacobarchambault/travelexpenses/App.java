@@ -109,14 +109,13 @@ public class App extends Application {
 											var reimbursement = miles * .4;
 											var saved = totalAllowed + reimbursement;
 											var baseSavings = excess ? totalAllowed : totalAmount;
-											var baseSavingsPlusReimbursement = baseSavings + reimbursement;
 											totalExpenses
 													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
 													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
 											excessLabel
 													.setText(NumberFormat.getCurrencyInstance().format(excessAmount));
-											savedLabel.setText(NumberFormat.getCurrencyInstance().format(baseSavingsPlusReimbursement));
+											savedLabel.setText(NumberFormat.getCurrencyInstance().format(baseSavings + reimbursement));
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
