@@ -33,8 +33,6 @@ public class App extends Application {
 
 	Label mainExpenseOutput = new Label("$0.00");
 
-	TextField outputLabel = new TextField();
-
 	ExpensesLabel totalExpensesLabel = new ExpensesLabel(
 			new Expenses(
 					List
