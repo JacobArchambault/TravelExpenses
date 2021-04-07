@@ -1,13 +1,11 @@
 package org.jacobarchambault.travelexpenses;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
@@ -48,7 +46,11 @@ public class App extends Application {
 													new BasicExpense(parking),
 													new BasicExpense(taxi),
 													new BasicExpense(lodging)))));
-	AllowedLabel allowedLabel = new AllowedLabel(tripDays, List.of(47, 20, 40, 195));
+	AllowedLabel allowedLabel = new AllowedLabel(tripDays, List
+			.of(
+					new BasicExpense(airFare),
+					new BasicExpense(carRental),
+					new BasicExpense(registration)), List.of(47, 20, 40, 195));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {

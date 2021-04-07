@@ -10,10 +10,12 @@ public class AllowedLabel extends Label {
 // 47, 20 40, 195
 	TextField daysInput;
 	List<Integer> array;
+	List<Expense> list;
 
-	AllowedLabel(TextField daysInput, List<Integer> array) {
+	AllowedLabel(TextField daysInput, List<Expense> list, List<Integer> array) {
 		this.daysInput = daysInput;
 		this.array = array;
+		this.list = list;
 	}
 
 	void display() {
@@ -22,6 +24,9 @@ public class AllowedLabel extends Label {
 			int allowed = 0;
 			for (int i : array) {
 				allowed += (i * days);
+			}
+			for (Expense e : list) {
+				allowed += e.amount();
 			}
 			this.setText(NumberFormat.getCurrencyInstance().format(allowed));
 
