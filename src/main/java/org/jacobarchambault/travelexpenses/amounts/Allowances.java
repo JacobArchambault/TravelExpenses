@@ -12,8 +12,8 @@ public class Allowances implements Amount {
 		this.dailyAllowances = dailyAllowances;
 	}
 
-	public int total() {
-		int allowed = dailyAllowances.total();
+	public double total() {
+		double allowed = dailyAllowances.total();
 		for (Amount e : basicExpenses) {
 			allowed += e.total();
 		}

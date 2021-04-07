@@ -1,21 +1,10 @@
 package org.jacobarchambault.travelexpenses;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
-
-import org.jacobarchambault.travelexpenses.amounts.Allowances;
-import org.jacobarchambault.travelexpenses.amounts.Expenses;
-
 import javafx.geometry.Pos;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 
 public class LabelGrid extends GridPane {
-
-	private Label label5;
-	private Label label6;
-	private Label label7;
-	private Label label8;
 
 	public LabelGrid(
 			Label label,
@@ -37,25 +26,6 @@ public class LabelGrid extends GridPane {
 		setVgap(10);
 		setCenterShape(true);
 		setAlignment(Pos.CENTER);
-		this.label5 = label5;
-		this.label6 = label6;
-		this.label7 = label7;
-		this.label8 = label8;
 	}
 
-//	void excessExpenses() {
-//		try {
-//			var totalExpenses = NumberFormat.getCurrencyInstance().parse(label5.getText()).intValue();
-//			var allowedExpenses = NumberFormat.getCurrencyInstance().parse(label6.getText()).intValue();
-//			label7
-//					.setText(
-//							NumberFormat
-//									.getCurrencyInstance()
-//									.format(totalExpenses > allowedExpenses ? totalExpenses - allowedExpenses : 0));
-//
-//		} catch (ParseException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-//	}
 }

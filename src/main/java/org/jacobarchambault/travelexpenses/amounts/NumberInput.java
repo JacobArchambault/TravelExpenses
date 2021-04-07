@@ -12,7 +12,11 @@ public class NumberInput extends TextField implements Amount {
 		});
 	}
 
-	public int total() {
-		return Integer.parseInt(this.getText());
+	public double total() {
+		try {
+			return Double.parseDouble(this.getText());
+		} catch (Exception ex) {
+			return 0;
+		}
 	}
 }

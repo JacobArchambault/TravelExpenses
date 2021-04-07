@@ -3,8 +3,6 @@ package org.jacobarchambault.travelexpenses;
 import java.text.NumberFormat;
 import java.util.List;
 
-import org.jacobarchambault.travelexpenses.amounts.Allowances;
-import org.jacobarchambault.travelexpenses.amounts.Amount;
 import org.jacobarchambault.travelexpenses.amounts.BasicExpense;
 import org.jacobarchambault.travelexpenses.amounts.DailyAllowances;
 import org.jacobarchambault.travelexpenses.amounts.Expenses;
@@ -50,6 +48,7 @@ public class App extends Application {
 	AmountLabel totalExpenses = new AmountLabel(expenses);
 	AmountLabel allowedLabel = new AmountLabel(allowances);
 	Label excessLabel = new Label();
+	AmountLabel savedLabel = new AmountLabel(milesDriven);
 	LabelGrid labelGrid = new LabelGrid(
 			new Label("Total expenses: "),
 			new Label("Allowable expenses: "),
@@ -58,7 +57,7 @@ public class App extends Application {
 			totalExpenses,
 			allowedLabel,
 			excessLabel,
-			new Label());
+			savedLabel);
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -100,17 +99,24 @@ public class App extends Application {
 											var basicAmount = expenses.total();
 											var perDiemAmount = perDiemExpenses.total();
 											var allowedAmount = allowances.total();
+											var miles = milesDriven.total();
 											var totalAmount = basicAmount + perDiemAmount;
 											var totalAllowed = basicAmount + allowedAmount;
-											var excessAmount = perDiemAmount > allowedAmount
+											boolean excess = perDiemAmount > allowedAmount;
+											var excessAmount = excess
 													? perDiemAmount - allowedAmount
 													: 0;
+											var reimbursement = miles * .4;
+											var saved = totalAllowed + reimbursement;
+											var baseSavings = excess ? totalAllowed : totalAmount;
+											var baseSavingsPlusReimbursement = baseSavings + reimbursement;
 											totalExpenses
 													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
 													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
 											excessLabel
 													.setText(NumberFormat.getCurrencyInstance().format(excessAmount));
+											savedLabel.setText(NumberFormat.getCurrencyInstance().format(baseSavingsPlusReimbursement));
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();

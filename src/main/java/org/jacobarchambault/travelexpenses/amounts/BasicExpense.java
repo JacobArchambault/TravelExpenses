@@ -10,7 +10,7 @@ public class BasicExpense implements Amount {
 		this.tf = tf;
 	}
 
-	public int total() {
+	public double total() {
 		try {
 			return Integer.parseInt(tf.getText());
 		} catch (Exception ex) {

@@ -3,15 +3,15 @@ package org.jacobarchambault.travelexpenses.amounts;
 import java.util.List;
 
 public class Expenses implements Amount {
-	List<Amount> expenses;
+	List<Amount> list;
 
 	public Expenses(List<Amount> list) {
-		this.expenses = list;
+		this.list = list;
 	}
 
-	public int total() {
+	public double total() {
 		int sum = 0;
-		for (var expense : expenses) {
+		for (var expense : list) {
 			sum += expense.total();
 		}
 		return sum;

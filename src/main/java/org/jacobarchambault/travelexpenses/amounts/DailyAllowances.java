@@ -12,7 +12,7 @@ public class DailyAllowances implements Amount{
 		this.maxAllowedList = maxAllowedList;
 	}
 
-	public int total() {
+	public double total() {
 		int days = days();
 		int allowed = 0;
 		for (int i : maxAllowedList) {
