@@ -35,17 +35,17 @@ public class App extends Application {
 
 	TextField outputLabel = new TextField();
 
-	Expenses expenses = new Expenses(
-			List
-					.of(
-							new BasicExpense(airFare),
-							new BasicExpense(carRental),
-							new BasicExpense(meals),
-							new BasicExpense(registration),
-							new BasicExpense(parking),
-							new BasicExpense(taxi),
-							new BasicExpense(lodging)));
-	ExpensesLabel totalExpensesLabel = new ExpensesLabel(expenses);
+	ExpensesLabel totalExpensesLabel = new ExpensesLabel(
+			new Expenses(
+					List
+							.of(
+									new BasicExpense(airFare),
+									new BasicExpense(carRental),
+									new BasicExpense(registration),
+									new BasicExpense(meals),
+									new BasicExpense(parking),
+									new BasicExpense(taxi),
+									new BasicExpense(lodging))));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
