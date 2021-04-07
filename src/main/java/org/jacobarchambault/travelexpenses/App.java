@@ -1,6 +1,7 @@
 package org.jacobarchambault.travelexpenses;
 
 import java.text.NumberFormat;
+import java.util.List;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -36,13 +37,15 @@ public class App extends Application {
 	TextField outputLabel = new TextField();
 
 	Expenses expenses = new Expenses(
-			new BasicExpense(airFare),
-			new BasicExpense(carRental),
-			new BasicExpense(meals),
-			new BasicExpense(registration),
-			new BasicExpense(parking),
-			new BasicExpense(taxi),
-			new BasicExpense(lodging));
+			List
+					.of(
+							new BasicExpense(airFare),
+							new BasicExpense(carRental),
+							new BasicExpense(meals),
+							new BasicExpense(registration),
+							new BasicExpense(parking),
+							new BasicExpense(taxi),
+							new BasicExpense(lodging)));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -88,20 +91,13 @@ public class App extends Application {
 												new Label(),
 												new Label(),
 												new Label()),
-										new HBox(
-												new EventButton(
-														"Calculate",
-														e -> display())))));
+										new HBox(new EventButton("Calculate", e -> display())))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
 
 	private void display() {
-		totalExpensesLabel
-				.setText(
-						NumberFormat
-								.getCurrencyInstance()
-								.format(expenses.add()));
+		totalExpensesLabel.setText(NumberFormat.getCurrencyInstance().format(expenses.add()));
 	}
 
 }
