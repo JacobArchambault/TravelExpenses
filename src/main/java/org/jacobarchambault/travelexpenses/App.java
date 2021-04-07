@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 public class App extends Application {
 	public static void main(final String[] args) {
 		Application.launch(args);
@@ -52,6 +53,15 @@ public class App extends Application {
 	Allowances allowances = new Allowances(basicExpenses, new DailyAllowances(tripDays, List.of(47, 20, 40, 195)));
 	AmountLabel totalExpenses = new AmountLabel(expenses);
 	AmountLabel allowedLabel = new AmountLabel(allowances);
+	LabelGrid labelGrid = new LabelGrid(
+			new Label("Total expenses: "),
+			new Label("Allowable expenses: "),
+			new Label("Excess expenses: "),
+			new Label("Saved expenses: "),
+			totalExpenses,
+			allowedLabel,
+			new Label(),
+			new Label(), expenses, allowances);
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -88,18 +98,11 @@ public class App extends Application {
 												new HBox(
 														new Label("Total miles driven: ($.40 reimbursed per mile): "),
 														milesDriven)),
-										new LabelGrid(
-												new Label("Total expenses: "),
-												new Label("Allowable expenses: "),
-												new Label("Excess expenses: "),
-												new Label("Saved expenses: "),
-												totalExpenses,
-												allowedLabel,
-												new Label(),
-												new Label()),
+										labelGrid,
 										new HBox(new EventButton("Calculate", e -> {
 											totalExpenses.display();
 											allowedLabel.display();
+											labelGrid.excessExpenses();
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
