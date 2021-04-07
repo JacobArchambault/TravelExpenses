@@ -31,7 +31,6 @@ public class App extends Application {
 
 	NumberInput milesDriven = new NumberInput();
 
-	Label totalExpensesLabel = new Label();
 	Label mainExpenseOutput = new Label("$0.00");
 
 	TextField outputLabel = new TextField();
@@ -46,6 +45,7 @@ public class App extends Application {
 							new BasicExpense(parking),
 							new BasicExpense(taxi),
 							new BasicExpense(lodging)));
+	ExpensesLabel totalExpensesLabel = new ExpensesLabel(expenses);
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -91,13 +91,9 @@ public class App extends Application {
 												new Label(),
 												new Label(),
 												new Label()),
-										new HBox(new EventButton("Calculate", e -> display())))));
+										new HBox(new EventButton("Calculate", e -> totalExpensesLabel.display())))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
-	}
-
-	private void display() {
-		totalExpensesLabel.setText(NumberFormat.getCurrencyInstance().format(expenses.add()));
 	}
 
 }
