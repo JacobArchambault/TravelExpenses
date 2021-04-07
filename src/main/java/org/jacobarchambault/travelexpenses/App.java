@@ -35,6 +35,15 @@ public class App extends Application {
 
 	TextField outputLabel = new TextField();
 
+	Expenses expenses = new Expenses(
+			new BasicExpense(airFare),
+			new BasicExpense(carRental),
+			new BasicExpense(meals),
+			new BasicExpense(registration),
+			new BasicExpense(parking),
+			new BasicExpense(taxi),
+			new BasicExpense(lodging));
+
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
 		primaryStage
@@ -82,32 +91,17 @@ public class App extends Application {
 										new HBox(
 												new EventButton(
 														"Calculate",
-														e -> subtotal(
-																totalExpensesLabel,
-																airFare,
-																carRental,
-																meals,
-																registration,
-																parking,
-																taxi,
-																lodging))))));
+														e -> display())))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
 
-	private void subtotal(Label outLabel, TextField... fields) {
-		outLabel.setText(NumberFormat.getCurrencyInstance().format(parseTexFieldInput(fields)));
-	}
-
-	private int parseTexFieldInput(TextField... fields) {
-		int sum = 0;
-		for (var field : fields) {
-			var text = field.getText();
-			if (text != null) {
-				sum += Integer.parseInt(text);
-			}
-		}
-		return sum;
+	private void display() {
+		totalExpensesLabel
+				.setText(
+						NumberFormat
+								.getCurrencyInstance()
+								.format(expenses.add()));
 	}
 
 }
