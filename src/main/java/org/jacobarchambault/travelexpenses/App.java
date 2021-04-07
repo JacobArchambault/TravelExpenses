@@ -82,41 +82,30 @@ public class App extends Application {
 										new HBox(
 												new EventButton(
 														"Calculate",
-														e -> total())))));
+														e -> subtotal(
+																totalExpensesLabel,
+																airFare,
+																carRental,
+																meals,
+																registration,
+																parking,
+																taxi,
+																lodging))))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
 
-	private void total() {
-
-		totalExpensesLabel
-				.setText(
-						Double
-								.toString(
-										new Expenses(
-												new BasicExpense(
-														airFare),
-												new BasicExpense(
-														carRental),
-												new BasicExpense(
-														parking),
-												new BasicExpense(taxi),
-												new BasicExpense(
-														registration),
-												new DailyExpense(
-														tripDays,
-														lodging))
-																.add()));
-	}
-
-	private void subtotal(Label outLabel, TextField...fields) {
+	private void subtotal(Label outLabel, TextField... fields) {
 		outLabel.setText(NumberFormat.getCurrencyInstance().format(parseTexFieldInput(fields)));
 	}
 
 	private int parseTexFieldInput(TextField... fields) {
 		int sum = 0;
 		for (var field : fields) {
-			sum += Integer.parseInt(field.getText());
+			var text = field.getText();
+			if (text != null) {
+				sum += Integer.parseInt(text);
+			}
 		}
 		return sum;
 	}

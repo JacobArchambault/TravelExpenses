@@ -12,4 +12,7 @@ class NumberInput extends TextField {
 		});
 	}
 
+	double value() {
+		return Double.parseDouble(this.getText());
+	}
 }
