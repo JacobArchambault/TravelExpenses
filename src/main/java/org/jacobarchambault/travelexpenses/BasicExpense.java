@@ -2,7 +2,7 @@ package org.jacobarchambault.travelexpenses;
 
 import javafx.scene.control.TextField;
 
-public class BasicExpense implements Expense {
+public class BasicExpense implements Amount {
 
 	TextField tf;
 
@@ -10,13 +10,12 @@ public class BasicExpense implements Expense {
 		this.tf = tf;
 	}
 
-	public double amount() {
+	public int total() {
 		try {
-			return Double.parseDouble(tf.getText());
+			return Integer.parseInt(tf.getText());
 		} catch (Exception ex) {
 			return 0;
 		}
 	}
-	
 
 }

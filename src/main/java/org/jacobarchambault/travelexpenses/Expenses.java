@@ -2,18 +2,18 @@ package org.jacobarchambault.travelexpenses;
 
 import java.util.List;
 
-public class Expenses {
-	List<List<Expense>> expenses;
+public class Expenses implements Amount {
+	List<List<Amount>> expenses;
 
-	Expenses(List<List<Expense>> list) {
+	Expenses(List<List<Amount>> list) {
 		this.expenses = list;
 	}
 
-	double add() {
-		double sum = 0;
+	public int total() {
+		int sum = 0;
 		for (var list : expenses) {
 			for (var expense : list) {
-				sum += expense.amount();
+				sum += expense.total();
 			}
 		}
 		return sum;

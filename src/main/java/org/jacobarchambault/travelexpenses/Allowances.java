@@ -3,20 +3,20 @@ package org.jacobarchambault.travelexpenses;
 import java.text.NumberFormat;
 import java.util.List;
 
-public class Allowances {
+public class Allowances implements Amount {
 
-	List<Expense> basicExpenses;
+	List<Amount> basicExpenses;
 	DailyAllowances dailyAllowances;
 
-	public Allowances(List<Expense> basicExpenses, DailyAllowances dailyAllowances) {
+	public Allowances(List<Amount> basicExpenses, DailyAllowances dailyAllowances) {
 		this.basicExpenses = basicExpenses;
 		this.dailyAllowances = dailyAllowances;
 	}
 
-	int total() {
+	public int total() {
 		int allowed = dailyAllowances.total();
-		for (Expense e : basicExpenses) {
-			allowed += e.amount();
+		for (Amount e : basicExpenses) {
+			allowed += e.total();
 		}
 		return allowed;
 

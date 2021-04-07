@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.ListIterator;
 
-public class DailyAllowances {
+public class DailyAllowances implements Amount{
 
 	NumberInput tripDays;
 	List<Integer> maxAllowedList;
@@ -15,7 +15,7 @@ public class DailyAllowances {
 		this.maxAllowedList = maxAllowedList;
 	}
 
-	int total() {
+	public int total() {
 		int days = days();
 		int allowed = 0;
 		for (int i : maxAllowedList) {

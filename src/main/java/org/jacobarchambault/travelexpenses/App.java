@@ -31,7 +31,7 @@ public class App extends Application {
 
 	Label mainExpenseOutput = new Label("$0.00");
 
-	List<Expense> basicExpenses = List
+	List<Amount> basicExpenses = List
 			.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration));
 	Expenses expenses = new Expenses(
 			List
@@ -44,8 +44,8 @@ public class App extends Application {
 											new BasicExpense(taxi),
 											new BasicExpense(lodging))));
 	Allowances allowances = new Allowances(basicExpenses, new DailyAllowances(tripDays, List.of(47, 20, 40, 195)));
-	ExpensesLabel totalExpensesLabel = new ExpensesLabel(expenses);
-	AllowedLabel allowedLabel = new AllowedLabel(tripDays, basicExpenses, List.of(47, 20, 40, 195));
+	AmountLabel totalExpenses = new AmountLabel(expenses);
+	AmountLabel allowedLabel = new AmountLabel(allowances);
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -87,12 +87,12 @@ public class App extends Application {
 												new Label("Allowable expenses: "),
 												new Label("Excess expenses: "),
 												new Label("Saved expenses: "),
-												totalExpensesLabel,
+												totalExpenses,
 												allowedLabel,
 												new Label(),
 												new Label()),
 										new HBox(new EventButton("Calculate", e -> {
-											totalExpensesLabel.display();
+											totalExpenses.display();
 											allowedLabel.display();
 										})))));
 		primaryStage.setTitle("Travel expenses");

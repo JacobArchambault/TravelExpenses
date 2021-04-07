@@ -1,5 +1,5 @@
 package org.jacobarchambault.travelexpenses;
 
-public interface Expense {
-	double amount();
+public interface Amount {
+	int total();
 }

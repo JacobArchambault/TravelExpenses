@@ -6,16 +6,18 @@ import javafx.scene.layout.GridPane;
 
 public class LabelGrid extends GridPane {
 
-	ExpensesLabel label5;
-	AllowedLabel label6;
+	Label label5;
+	Label label6;
 	Label label7;
+	Label label8;
+
 	public LabelGrid(
 			Label label,
 			Label label2,
 			Label label3,
 			Label label4,
-			ExpensesLabel label5,
-			AllowedLabel label6,
+			Label label5,
+			Label label6,
 			Label label7,
 			Label label8) {
 		add(label, 0, 0);
@@ -32,9 +34,7 @@ public class LabelGrid extends GridPane {
 		this.label5 = label5;
 		this.label6 = label6;
 		this.label7 = label7;
-	}
-	
-	void excess() {
+		this.label8 = label8;
 	}
 
 }
