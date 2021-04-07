@@ -25,9 +25,7 @@ public class LabelGrid extends GridPane {
 			Label label5,
 			Label label6,
 			Label label7,
-			Label label8,
-			Expenses expenses,
-			Allowances allowances) {
+			Label label8) {
 		add(label, 0, 0);
 		add(label2, 0, 1);
 		add(label3, 0, 2);
@@ -45,19 +43,19 @@ public class LabelGrid extends GridPane {
 		this.label8 = label8;
 	}
 
-	void excessExpenses() {
-		try {
-			var totalExpenses = NumberFormat.getCurrencyInstance().parse(label5.getText()).intValue();
-			var allowedExpenses = NumberFormat.getCurrencyInstance().parse(label6.getText()).intValue();
-			label7
-					.setText(
-							NumberFormat
-									.getCurrencyInstance()
-									.format(totalExpenses > allowedExpenses ? totalExpenses - allowedExpenses : 0));
-
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	void excessExpenses() {
+//		try {
+//			var totalExpenses = NumberFormat.getCurrencyInstance().parse(label5.getText()).intValue();
+//			var allowedExpenses = NumberFormat.getCurrencyInstance().parse(label6.getText()).intValue();
+//			label7
+//					.setText(
+//							NumberFormat
+//									.getCurrencyInstance()
+//									.format(totalExpenses > allowedExpenses ? totalExpenses - allowedExpenses : 0));
+//
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 }

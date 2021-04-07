@@ -1,5 +1,6 @@
 package org.jacobarchambault.travelexpenses;
 
+import java.text.NumberFormat;
 import java.util.List;
 
 import org.jacobarchambault.travelexpenses.amounts.Allowances;
@@ -36,23 +37,19 @@ public class App extends Application {
 
 	NumberInput milesDriven = new NumberInput();
 
-	Label mainExpenseOutput = new Label("$0.00");
-
-	List<Amount> basicExpenses = List
-			.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration));
 	Expenses expenses = new Expenses(
+			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
+	Expenses perDiemExpenses = new Expenses(
 			List
 					.of(
-							basicExpenses,
-							List
-									.of(
-											new BasicExpense(meals),
-											new BasicExpense(parking),
-											new BasicExpense(taxi),
-											new BasicExpense(lodging))));
-	Allowances allowances = new Allowances(basicExpenses, new DailyAllowances(tripDays, List.of(47, 20, 40, 195)));
+							new BasicExpense(meals),
+							new BasicExpense(parking),
+							new BasicExpense(taxi),
+							new BasicExpense(lodging)));
+	DailyAllowances allowances = new DailyAllowances(tripDays, List.of(47, 20, 40, 195));
 	AmountLabel totalExpenses = new AmountLabel(expenses);
 	AmountLabel allowedLabel = new AmountLabel(allowances);
+	Label excessLabel = new Label();
 	LabelGrid labelGrid = new LabelGrid(
 			new Label("Total expenses: "),
 			new Label("Allowable expenses: "),
@@ -60,8 +57,8 @@ public class App extends Application {
 			new Label("Saved expenses: "),
 			totalExpenses,
 			allowedLabel,
-			new Label(),
-			new Label(), expenses, allowances);
+			excessLabel,
+			new Label());
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -100,9 +97,20 @@ public class App extends Application {
 														milesDriven)),
 										labelGrid,
 										new HBox(new EventButton("Calculate", e -> {
-											totalExpenses.display();
-											allowedLabel.display();
-											labelGrid.excessExpenses();
+											var basicAmount = expenses.total();
+											var perDiemAmount = perDiemExpenses.total();
+											var allowedAmount = allowances.total();
+											var totalAmount = basicAmount + perDiemAmount;
+											var totalAllowed = basicAmount + allowedAmount;
+											var excessAmount = perDiemAmount > allowedAmount
+													? perDiemAmount - allowedAmount
+													: 0;
+											totalExpenses
+													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
+											allowedLabel
+													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
+											excessLabel
+													.setText(NumberFormat.getCurrencyInstance().format(excessAmount));
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
