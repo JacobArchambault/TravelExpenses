@@ -1,9 +1,6 @@
-package org.jacobarchambault.travelexpenses;
+package org.jacobarchambault.travelexpenses.amounts;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 public class DailyAllowances implements Amount{
 

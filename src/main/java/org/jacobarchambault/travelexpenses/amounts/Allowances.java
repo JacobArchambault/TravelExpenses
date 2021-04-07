@@ -1,6 +1,5 @@
-package org.jacobarchambault.travelexpenses;
+package org.jacobarchambault.travelexpenses.amounts;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 public class Allowances implements Amount {

@@ -2,6 +2,13 @@ package org.jacobarchambault.travelexpenses;
 
 import java.util.List;
 
+import org.jacobarchambault.travelexpenses.amounts.Allowances;
+import org.jacobarchambault.travelexpenses.amounts.Amount;
+import org.jacobarchambault.travelexpenses.amounts.BasicExpense;
+import org.jacobarchambault.travelexpenses.amounts.DailyAllowances;
+import org.jacobarchambault.travelexpenses.amounts.Expenses;
+import org.jacobarchambault.travelexpenses.amounts.NumberInput;
+
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -9,7 +16,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TitledPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
-
 public class App extends Application {
 	public static void main(final String[] args) {
 		Application.launch(args);

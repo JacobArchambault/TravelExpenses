@@ -1,4 +1,4 @@
-package org.jacobarchambault.travelexpenses;
+package org.jacobarchambault.travelexpenses.amounts;
 
 import javafx.scene.control.TextField;
 
@@ -6,7 +6,7 @@ public class BasicExpense implements Amount {
 
 	TextField tf;
 
-	BasicExpense(TextField tf) {
+	public BasicExpense(TextField tf) {
 		this.tf = tf;
 	}
 

@@ -1,11 +1,11 @@
-package org.jacobarchambault.travelexpenses;
+package org.jacobarchambault.travelexpenses.amounts;
 
 import java.util.List;
 
 public class Expenses implements Amount {
 	List<List<Amount>> expenses;
 
-	Expenses(List<List<Amount>> list) {
+	public Expenses(List<List<Amount>> list) {
 		this.expenses = list;
 	}
 

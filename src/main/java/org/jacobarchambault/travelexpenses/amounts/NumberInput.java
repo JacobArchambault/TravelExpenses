@@ -1,10 +1,10 @@
-package org.jacobarchambault.travelexpenses;
+package org.jacobarchambault.travelexpenses.amounts;
 
 import javafx.scene.control.TextField;
 
-class NumberInput extends TextField {
+public class NumberInput extends TextField implements Amount {
 
-	NumberInput() {
+	public NumberInput() {
 		textProperty().addListener((final var observable, final var oldValue, final var newValue) -> {
 			if (!newValue.matches("\\d*")) {
 				setText(newValue.replaceAll("[^\\d]", ""));
@@ -12,7 +12,7 @@ class NumberInput extends TextField {
 		});
 	}
 
-	double value() {
-		return Double.parseDouble(this.getText());
+	public int total() {
+		return Integer.parseInt(this.getText());
 	}
 }
