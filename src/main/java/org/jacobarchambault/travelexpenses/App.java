@@ -43,6 +43,7 @@ public class App extends Application {
 											new BasicExpense(parking),
 											new BasicExpense(taxi),
 											new BasicExpense(lodging))));
+	Allowances allowances = new Allowances(basicExpenses, new DailyAllowances(tripDays, List.of(47, 20, 40, 195)));
 	ExpensesLabel totalExpensesLabel = new ExpensesLabel(expenses);
 	AllowedLabel allowedLabel = new AllowedLabel(tripDays, basicExpenses, List.of(47, 20, 40, 195));
 
