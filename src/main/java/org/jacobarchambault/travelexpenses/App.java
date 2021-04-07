@@ -51,9 +51,7 @@ public class App extends Application {
 														new Label("Car Rental: "),
 														carRental,
 														new Label("Registration: "),
-														registration,
-														new EventButton("Calculate Subtotal", e -> subtotal()),
-														mainExpenseOutput)),
+														registration)),
 										new TitledPane(
 												"Per diem expenses",
 												new PerDiemExpenseGrid(
@@ -66,7 +64,7 @@ public class App extends Application {
 														new Label("Total taxi fees (up to $40 per day): "),
 														taxi,
 														new Label("Nightly lodging (up to $195 per day): "),
-														lodging, new EventButton("Calculate subtotal", e -> subtotal()), new Label("$0.00"))),
+														lodging)),
 										new TitledPane(
 												"Gas mileage reimbursement",
 												new HBox(
@@ -84,35 +82,43 @@ public class App extends Application {
 										new HBox(
 												new EventButton(
 														"Calculate",
-														e -> totalExpensesLabel
-																.setText(
-																		Double
-																				.toString(
-																						new Expenses(
-																								new BasicExpense(
-																										airFare),
-																								new BasicExpense(
-																										carRental),
-																								new BasicExpense(
-																										parking),
-																								new BasicExpense(taxi),
-																								new BasicExpense(
-																										registration),
-																								new DailyExpense(
-																										tripDays,
-																										lodging))
-																												.add())))))));
+														e -> total())))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
 
-	private void subtotal() {
-		mainExpenseOutput.setText(NumberFormat.getCurrencyInstance().format(parseTexFieldInput()));
+	private void total() {
+
+		totalExpensesLabel
+				.setText(
+						Double
+								.toString(
+										new Expenses(
+												new BasicExpense(
+														airFare),
+												new BasicExpense(
+														carRental),
+												new BasicExpense(
+														parking),
+												new BasicExpense(taxi),
+												new BasicExpense(
+														registration),
+												new DailyExpense(
+														tripDays,
+														lodging))
+																.add()));
 	}
 
-	private int parseTexFieldInput() {
-		return Integer.parseInt(airFare.getText()) + Integer.parseInt(carRental.getText())
-				+ Integer.parseInt(registration.getText());
+	private void subtotal(Label outLabel, TextField...fields) {
+		outLabel.setText(NumberFormat.getCurrencyInstance().format(parseTexFieldInput(fields)));
+	}
+
+	private int parseTexFieldInput(TextField... fields) {
+		int sum = 0;
+		for (var field : fields) {
+			sum += Integer.parseInt(field.getText());
+		}
+		return sum;
 	}
 
 }
