@@ -33,17 +33,17 @@ public class App extends Application {
 
 	List<Expense> basicExpenses = List
 			.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration));
-	ExpensesLabel totalExpensesLabel = new ExpensesLabel(
-			new Expenses(
-					List
-							.of(
-									basicExpenses,
-									List
-											.of(
-													new BasicExpense(meals),
-													new BasicExpense(parking),
-													new BasicExpense(taxi),
-													new BasicExpense(lodging)))));
+	Expenses expenses = new Expenses(
+			List
+					.of(
+							basicExpenses,
+							List
+									.of(
+											new BasicExpense(meals),
+											new BasicExpense(parking),
+											new BasicExpense(taxi),
+											new BasicExpense(lodging))));
+	ExpensesLabel totalExpensesLabel = new ExpensesLabel(expenses);
 	AllowedLabel allowedLabel = new AllowedLabel(tripDays, basicExpenses, List.of(47, 20, 40, 195));
 
 	@Override
