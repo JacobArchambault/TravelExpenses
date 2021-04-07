@@ -48,6 +48,7 @@ public class App extends Application {
 													new BasicExpense(parking),
 													new BasicExpense(taxi),
 													new BasicExpense(lodging)))));
+	AllowedLabel allowedLabel = new AllowedLabel(tripDays, List.of(47, 20, 40, 195));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -90,10 +91,13 @@ public class App extends Application {
 												new Label("Excess expenses: "),
 												new Label("Saved expenses: "),
 												totalExpensesLabel,
-												new Label(),
+												allowedLabel,
 												new Label(),
 												new Label()),
-										new HBox(new EventButton("Calculate", e -> totalExpensesLabel.display())))));
+										new HBox(new EventButton("Calculate", e -> {
+											totalExpensesLabel.display();
+											allowedLabel.display();
+										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
