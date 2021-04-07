@@ -39,13 +39,17 @@ public class App extends Application {
 			new Expenses(
 					List
 							.of(
-									new BasicExpense(airFare),
-									new BasicExpense(carRental),
-									new BasicExpense(registration),
-									new BasicExpense(meals),
-									new BasicExpense(parking),
-									new BasicExpense(taxi),
-									new BasicExpense(lodging))));
+									List
+											.of(
+													new BasicExpense(airFare),
+													new BasicExpense(carRental),
+													new BasicExpense(registration)),
+									List
+											.of(
+													new BasicExpense(meals),
+													new BasicExpense(parking),
+													new BasicExpense(taxi),
+													new BasicExpense(lodging)))));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {

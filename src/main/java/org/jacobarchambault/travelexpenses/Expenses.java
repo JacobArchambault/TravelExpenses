@@ -3,16 +3,18 @@ package org.jacobarchambault.travelexpenses;
 import java.util.List;
 
 public class Expenses {
-	List<Expense> expenses;
+	List<List<Expense>> expenses;
 
-	Expenses(List<Expense> expenses) {
-		this.expenses = expenses;
+	Expenses(List<List<Expense>> list) {
+		this.expenses = list;
 	}
 
 	double add() {
 		double sum = 0;
-		for (var expense : expenses) {
-			sum += expense.amount();
+		for (var list : expenses) {
+			for (var expense : list) {
+				sum += expense.amount();
+			}
 		}
 		return sum;
 	}
