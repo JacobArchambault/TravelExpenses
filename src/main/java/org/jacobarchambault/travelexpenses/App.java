@@ -83,19 +83,15 @@ public class App extends Application {
 											final var parkingTotal = parking.total();
 											final var taxiTotal = taxi.total();
 											final var lodgingTotal = lodging.total();
+											final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
+													+ lodgingTotal;
+											totalExpenses
+													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											final var tripDaysTotal = tripDays.total();
 											final var allowedMeals = tripDaysTotal * 47;
 											final var allowedParking = tripDaysTotal * 20;
 											final var allowedTaxi = tripDaysTotal * 40;
 											final var allowedLodging = tripDaysTotal * 195;
-											final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
-													+ lodgingTotal;
-											final var excess = excess(mealsTotal, allowedMeals)
-													+ excess(parkingTotal, allowedParking)
-													+ excess(taxiTotal, allowedTaxi)
-													+ excess(lodgingTotal, allowedLodging);
-											totalExpenses
-													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
 													.setText(
 															NumberFormat
@@ -103,17 +99,25 @@ public class App extends Application {
 																	.format(
 																			basicAmount + allowedMeals + allowedParking
 																					+ allowedTaxi + allowedLodging));
+											final var excess = excess(mealsTotal, allowedMeals)
+													+ excess(parkingTotal, allowedParking)
+													+ excess(taxiTotal, allowedTaxi)
+													+ excess(lodgingTotal, allowedLodging);
 											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
-											savedLabel
-													.setText(
-															NumberFormat
-																	.getCurrencyInstance()
-																	.format(
-																			totalAmount - excess
-																					+ milesDriven.total() * .4));
+											displaySaved(totalAmount, excess);
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
+	}
+
+	private void displaySaved(final double totalAmount, final double excess) {
+		savedLabel
+				.setText(
+						NumberFormat
+								.getCurrencyInstance()
+								.format(
+										totalAmount - excess
+												+ milesDriven.total() * .4));
 	}
 
 	private double excess(final double total, final double allowed) {
