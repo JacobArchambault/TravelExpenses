@@ -33,7 +33,7 @@ public class App extends Application {
 			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
 	Label totalExpenses = new Label();
 	NumberInput milesDriven = new NumberInput();
-	Label savedLabel = new Label();
+	SavedLabel savedLabel = new SavedLabel(milesDriven);
 	NumberInput lodging = new NumberInput();
 
 	// Per diem expenses
@@ -104,20 +104,10 @@ public class App extends Application {
 													+ excess(taxiTotal, allowedTaxi)
 													+ excess(lodgingTotal, allowedLodging);
 											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
-											displaySaved(totalAmount, excess);
+											savedLabel.displaySaved(totalAmount, excess);
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
-	}
-
-	private void displaySaved(final double totalAmount, final double excess) {
-		savedLabel
-				.setText(
-						NumberFormat
-								.getCurrencyInstance()
-								.format(
-										totalAmount - excess
-												+ milesDriven.total() * .4));
 	}
 
 	private double excess(final double total, final double allowed) {
