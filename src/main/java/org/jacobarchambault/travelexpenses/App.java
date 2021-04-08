@@ -33,15 +33,6 @@ public class App extends Application {
 	Label totalExpenses = new Label();
 	NumberInput milesDriven = new NumberInput();
 	Label savedLabel = new Label();
-	LabelGrid labelGrid = new LabelGrid(
-			new Label("Total expenses: "),
-			new Label("Allowable expenses: "),
-			new Label("Excess expenses: "),
-			new Label("Saved expenses: "),
-			totalExpenses,
-			allowedLabel,
-			excessLabel,
-			savedLabel);
 	NumberInput lodging = new NumberInput();
 
 	// Per diem expenses
@@ -49,13 +40,6 @@ public class App extends Application {
 
 	NumberInput parking = new NumberInput();
 	NumberInput taxi = new NumberInput();
-	Expenses perDiemExpenses = new Expenses(
-			List
-					.of(
-							new BasicExpense(meals),
-							new BasicExpense(parking),
-							new BasicExpense(taxi),
-							new BasicExpense(lodging)));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -92,7 +76,15 @@ public class App extends Application {
 												new HBox(
 														new Label("Total miles driven: ($.40 reimbursed per mile): "),
 														milesDriven)),
-										labelGrid,
+										new LabelGrid(
+												new Label("Total expenses: "),
+												new Label("Allowable expenses: "),
+												new Label("Excess expenses: "),
+												new Label("Saved expenses: "),
+												totalExpenses,
+												allowedLabel,
+												excessLabel,
+												savedLabel),
 										new HBox(new EventButton("Calculate", e -> {
 											final var basicAmount = expenses.total();
 											final var mealsTotal = meals.total();
