@@ -97,24 +97,26 @@ public class App extends Application {
 										labelGrid,
 										new HBox(new EventButton("Calculate", e -> {
 											var basicAmount = expenses.total();
-											var perDiemAmount = perDiemExpenses.total();
+											var mealsTotal = meals.total();
+											var parkingTotal = parking.total();
+											var taxiTotal = taxi.total();
+											var lodgingTotal = lodging.total();
 											var tripDaysTotal = tripDays.total();
 											var allowedMeals = tripDaysTotal * 47;
 											var allowedParking = tripDaysTotal * 20;
 											var allowedTaxi = tripDaysTotal * 40;
 											var allowedLodging = tripDaysTotal * 195;
-											var allowedAmount = allowedMeals + allowedParking + allowedTaxi
-													+ allowedLodging;
-											var totalAmount = basicAmount + perDiemAmount;
-											var totalAllowed = basicAmount + allowedAmount;
-											double excess = excess(meals.total(), allowedMeals)
-													+ excess(parking.total(), allowedParking)
-													+ excess(taxi.total(), allowedTaxi)
-													+ excess(lodging.total(), allowedLodging);
+											var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
+													+ lodgingTotal;
+											double excess = excess(mealsTotal, allowedMeals)
+													+ excess(parkingTotal, allowedParking)
+													+ excess(taxiTotal, allowedTaxi)
+													+ excess(lodgingTotal, allowedLodging);
 											totalExpenses
 													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
-													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
+													.setText(NumberFormat.getCurrencyInstance().format(basicAmount + allowedMeals + allowedParking + allowedTaxi
+															+ allowedLodging));
 											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
 											savedLabel
 													.setText(
