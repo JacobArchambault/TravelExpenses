@@ -78,32 +78,30 @@ public class App extends Application {
 														new Label("Excess expenses: "), excessLabel,
 														new Label("Saved expenses: "), savedLabel }),
 										new HBox(new EventButton("Calculate", e -> {
-											final var basicAmount = expenses.total();
-											final var mealsTotal = meals.total();
-											final var parkingTotal = parking.total();
-											final var taxiTotal = taxi.total();
-											final var lodgingTotal = lodging.total();
-											final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
-													+ lodgingTotal;
-											totalExpenses.display(totalAmount);
-											final var tripDaysTotal = tripDays.total();
-											final var allowedMeals = tripDaysTotal * 47;
-											final var allowedParking = tripDaysTotal * 20;
-											final var allowedTaxi = tripDaysTotal * 40;
-											final var allowedLodging = tripDaysTotal * 195;
-											allowedLabel
-													.display(
-															basicAmount + allowedMeals + allowedParking + allowedTaxi
-																	+ allowedLodging);
-											final var excess = excess(mealsTotal, allowedMeals)
-													+ excess(parkingTotal, allowedParking)
-													+ excess(taxiTotal, allowedTaxi)
-													+ excess(lodgingTotal, allowedLodging);
-											excessLabel.display(excess);
-											savedLabel.display(totalAmount, excess);
+											displayAll();
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
+	}
+
+	private void displayAll() {
+		final var basicAmount = expenses.total();
+		final var mealsTotal = meals.total();
+		final var parkingTotal = parking.total();
+		final var taxiTotal = taxi.total();
+		final var lodgingTotal = lodging.total();
+		final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal + lodgingTotal;
+		totalExpenses.display(totalAmount);
+		final var tripDaysTotal = tripDays.total();
+		final var allowedMeals = tripDaysTotal * 47;
+		final var allowedParking = tripDaysTotal * 20;
+		final var allowedTaxi = tripDaysTotal * 40;
+		final var allowedLodging = tripDaysTotal * 195;
+		allowedLabel.display(basicAmount + allowedMeals + allowedParking + allowedTaxi + allowedLodging);
+		final var excess = excess(mealsTotal, allowedMeals) + excess(parkingTotal, allowedParking)
+				+ excess(taxiTotal, allowedTaxi) + excess(lodgingTotal, allowedLodging);
+		excessLabel.display(excess);
+		savedLabel.display(totalAmount, excess);
 	}
 
 	private double excess(final double total, final double allowed) {
