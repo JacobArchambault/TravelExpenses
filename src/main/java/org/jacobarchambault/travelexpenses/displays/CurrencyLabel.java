@@ -1,8 +1,6 @@
-package org.jacobarchambault.travelexpenses;
+package org.jacobarchambault.travelexpenses.displays;
 
 import java.text.NumberFormat;
-
-import org.jacobarchambault.travelexpenses.displays.Display;
 
 import javafx.scene.control.Label;
 

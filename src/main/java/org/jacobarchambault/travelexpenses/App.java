@@ -5,6 +5,8 @@ import java.util.List;
 import org.jacobarchambault.travelexpenses.amounts.BasicExpense;
 import org.jacobarchambault.travelexpenses.amounts.Expenses;
 import org.jacobarchambault.travelexpenses.amounts.NumberInput;
+import org.jacobarchambault.travelexpenses.displays.CurrencyLabel;
+import org.jacobarchambault.travelexpenses.displays.SavedLabel;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
