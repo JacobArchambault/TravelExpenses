@@ -99,27 +99,10 @@ public class App extends Application {
 											var basicAmount = expenses.total();
 											var perDiemAmount = perDiemExpenses.total();
 											var tripDaysTotal = tripDays.total();
-											var excessAmount = 0;
-											var mealsTotal = meals.total();
 											var allowedMeals = tripDaysTotal * 47;
-											if (mealsTotal > (allowedMeals)) {
-												excessAmount += (mealsTotal - allowedMeals);
-											}
-											var parkingTotal = parking.total();
 											var allowedParking = tripDaysTotal * 20;
-											if (parkingTotal > (allowedParking)) {
-												excessAmount += (parkingTotal - allowedParking);
-											}
-											var taxiTotal = taxi.total();
 											var allowedTaxi = tripDaysTotal * 40;
-											if (taxiTotal > (allowedTaxi)) {
-												excessAmount += (taxiTotal - allowedTaxi);
-											}
-											var lodgingTotal = lodging.total();
 											var allowedLodging = tripDaysTotal * 195;
-											if (lodgingTotal > (allowedLodging)) {
-												excessAmount += (lodgingTotal - allowedLodging);
-											}
 											var allowedAmount = allowedMeals + allowedParking + allowedTaxi
 													+ allowedLodging;
 											var totalAmount = basicAmount + perDiemAmount;
@@ -130,7 +113,18 @@ public class App extends Application {
 											allowedLabel
 													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
 											excessLabel
-													.setText(NumberFormat.getCurrencyInstance().format(excessAmount));
+													.setText(
+															NumberFormat
+																	.getCurrencyInstance()
+																	.format(
+																			excess(meals.total(), allowedMeals)
+																					+ excess(
+																							parking.total(),
+																							allowedParking)
+																					+ excess(taxi.total(), allowedTaxi)
+																					+ excess(
+																							lodging.total(),
+																							allowedLodging)));
 											savedLabel
 													.setText(
 															NumberFormat
@@ -141,6 +135,10 @@ public class App extends Application {
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
+	}
+
+	private double excess(double total, double allowed) {
+		return total > allowed ? total - allowed : 0;
 	}
 
 }
