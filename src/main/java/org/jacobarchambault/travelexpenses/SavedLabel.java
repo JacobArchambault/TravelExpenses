@@ -15,7 +15,7 @@ public class SavedLabel extends Label {
 		this.milesDriven = milesDriven;
 	}
 
-	void displaySaved(final double totalAmount, final double excess) {
+	void display(final double totalAmount, final double excess) {
 		this.setText(NumberFormat.getCurrencyInstance().format(totalAmount - excess + milesDriven.total() * .4));
 	}
 

@@ -104,7 +104,7 @@ public class App extends Application {
 													+ excess(taxiTotal, allowedTaxi)
 													+ excess(lodgingTotal, allowedLodging);
 											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
-											savedLabel.displaySaved(totalAmount, excess);
+											savedLabel.display(totalAmount, excess);
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
