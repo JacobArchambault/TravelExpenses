@@ -4,7 +4,6 @@ import java.text.NumberFormat;
 import java.util.List;
 
 import org.jacobarchambault.travelexpenses.amounts.BasicExpense;
-import org.jacobarchambault.travelexpenses.amounts.DailyAllowances;
 import org.jacobarchambault.travelexpenses.amounts.Expenses;
 import org.jacobarchambault.travelexpenses.amounts.NumberInput;
 
@@ -24,17 +23,16 @@ public class App extends Application {
 	// Fully covered expenses
 	NumberInput airFare = new NumberInput();
 	NumberInput tripDays = new NumberInput();
-	DailyAllowances allowances = new DailyAllowances(tripDays, List.of(47, 20, 40, 195));
-	AmountLabel allowedLabel = new AmountLabel(allowances);
+	Label allowedLabel = new Label();
 
 	NumberInput carRental = new NumberInput();
 	Label excessLabel = new Label();
 	NumberInput registration = new NumberInput();
 	Expenses expenses = new Expenses(
 			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
-	AmountLabel totalExpenses = new AmountLabel(expenses);
+	Label totalExpenses = new Label();
 	NumberInput milesDriven = new NumberInput();
-	AmountLabel savedLabel = new AmountLabel(milesDriven);
+	Label savedLabel = new Label();
 	LabelGrid labelGrid = new LabelGrid(
 			new Label("Total expenses: "),
 			new Label("Allowable expenses: "),
