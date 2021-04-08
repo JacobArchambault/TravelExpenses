@@ -2,7 +2,6 @@ package org.jacobarchambault.travelexpenses;
 
 import java.util.List;
 
-import org.jacobarchambault.travelexpenses.amounts.BasicExpense;
 import org.jacobarchambault.travelexpenses.amounts.Expenses;
 import org.jacobarchambault.travelexpenses.amounts.NumberInput;
 import org.jacobarchambault.travelexpenses.displays.CurrencyLabel;
@@ -27,8 +26,7 @@ public class App extends Application {
 	NumberInput carRental = new NumberInput();
 	CurrencyLabel excessLabel = new CurrencyLabel();
 	NumberInput registration = new NumberInput();
-	Expenses expenses = new Expenses(
-			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
+	Expenses expenses = new Expenses(List.of(airFare, carRental, registration));
 	NumberInput lodging = new NumberInput();
 	NumberInput meals = new NumberInput();
 	NumberInput milesDriven = new NumberInput();
