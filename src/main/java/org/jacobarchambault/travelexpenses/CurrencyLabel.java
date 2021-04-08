@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 
 public class CurrencyLabel extends Label {
 
-	void display(double number) {
-		this.setText(NumberFormat.getCurrencyInstance().format(number));
+	void display(final double number) {
+		setText(NumberFormat.getCurrencyInstance().format(number));
 	}
 }

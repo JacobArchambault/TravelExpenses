@@ -1,6 +1,5 @@
 package org.jacobarchambault.travelexpenses;
 
-import java.text.NumberFormat;
 import java.util.List;
 
 import org.jacobarchambault.travelexpenses.amounts.BasicExpense;
@@ -21,26 +20,21 @@ public class App extends Application {
 		Application.launch(args);
 	}
 
-	// Fully covered expenses
 	NumberInput airFare = new NumberInput();
-	NumberInput tripDays = new NumberInput();
 	CurrencyLabel allowedLabel = new CurrencyLabel();
-
 	NumberInput carRental = new NumberInput();
 	CurrencyLabel excessLabel = new CurrencyLabel();
 	NumberInput registration = new NumberInput();
 	Expenses expenses = new Expenses(
 			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
-	CurrencyLabel totalExpenses = new CurrencyLabel();
-	NumberInput milesDriven = new NumberInput();
-	SavedLabel savedLabel = new SavedLabel(milesDriven);
 	NumberInput lodging = new NumberInput();
-
-	// Per diem expenses
 	NumberInput meals = new NumberInput();
-
+	NumberInput milesDriven = new NumberInput();
 	NumberInput parking = new NumberInput();
+	SavedLabel savedLabel = new SavedLabel(milesDriven);
 	NumberInput taxi = new NumberInput();
+	CurrencyLabel totalExpenses = new CurrencyLabel();
+	NumberInput tripDays = new NumberInput();
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -77,9 +71,7 @@ public class App extends Application {
 														new Label("Allowable expenses: "), allowedLabel,
 														new Label("Excess expenses: "), excessLabel,
 														new Label("Saved expenses: "), savedLabel }),
-										new HBox(new EventButton("Calculate", e -> {
-											displayAll();
-										})))));
+										new HBox(new EventButton("Calculate", e -> displayAll())))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
