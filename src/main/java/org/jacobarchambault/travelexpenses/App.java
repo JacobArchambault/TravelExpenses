@@ -99,23 +99,27 @@ public class App extends Application {
 											var basicAmount = expenses.total();
 											var perDiemAmount = perDiemExpenses.total();
 											var allowedAmount = allowances.total();
-											var miles = milesDriven.total();
 											var totalAmount = basicAmount + perDiemAmount;
 											var totalAllowed = basicAmount + allowedAmount;
 											boolean excess = perDiemAmount > allowedAmount;
-											var excessAmount = excess
-													? perDiemAmount - allowedAmount
-													: 0;
-											var reimbursement = miles * .4;
-											var saved = totalAllowed + reimbursement;
-											var baseSavings = excess ? totalAllowed : totalAmount;
 											totalExpenses
 													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
 													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
 											excessLabel
-													.setText(NumberFormat.getCurrencyInstance().format(excessAmount));
-											savedLabel.setText(NumberFormat.getCurrencyInstance().format(baseSavings + reimbursement));
+													.setText(
+															NumberFormat
+																	.getCurrencyInstance()
+																	.format(
+																			excess ? perDiemAmount - allowedAmount
+																					: 0));
+											savedLabel
+													.setText(
+															NumberFormat
+																	.getCurrencyInstance()
+																	.format(
+																			(excess ? totalAllowed : totalAmount)
+																					+ (milesDriven.total() * .4)));
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
