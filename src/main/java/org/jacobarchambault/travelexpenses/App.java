@@ -21,20 +21,20 @@ public class App extends Application {
 		Application.launch(args);
 	}
 
-	private NumberInput airFare = new NumberInput();
-	private CurrencyLabel allowedLabel = new CurrencyLabel();
-	private NumberInput carRental = new NumberInput();
-	private CurrencyLabel excessLabel = new CurrencyLabel();
-	private NumberInput registration = new NumberInput();
-	private Expenses expenses = new Expenses(List.of(airFare, carRental, registration));
-	private NumberInput lodging = new NumberInput();
-	private NumberInput meals = new NumberInput();
-	private NumberInput milesDriven = new NumberInput();
-	private NumberInput parking = new NumberInput();
-	private SavedLabel savedLabel = new SavedLabel(milesDriven);
-	private NumberInput taxi = new NumberInput();
-	private CurrencyLabel totalExpenses = new CurrencyLabel();
-	private NumberInput tripDays = new NumberInput();
+	private final NumberInput airFare = new NumberInput();
+	private final CurrencyLabel allowedLabel = new CurrencyLabel();
+	private final NumberInput carRental = new NumberInput();
+	private final CurrencyLabel excessLabel = new CurrencyLabel();
+	private final NumberInput registration = new NumberInput();
+	private final Expenses expenses = new Expenses(List.of(airFare, carRental, registration));
+	private final NumberInput lodging = new NumberInput();
+	private final NumberInput meals = new NumberInput();
+	private final NumberInput milesDriven = new NumberInput();
+	private final NumberInput parking = new NumberInput();
+	private final SavedLabel savedLabel = new SavedLabel(milesDriven);
+	private final NumberInput taxi = new NumberInput();
+	private final CurrencyLabel totalExpenses = new CurrencyLabel();
+	private final NumberInput tripDays = new NumberInput();
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
