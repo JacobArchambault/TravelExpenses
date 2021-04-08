@@ -107,30 +107,21 @@ public class App extends Application {
 													+ allowedLodging;
 											var totalAmount = basicAmount + perDiemAmount;
 											var totalAllowed = basicAmount + allowedAmount;
-											boolean excess = perDiemAmount > allowedAmount;
+											double excess = excess(meals.total(), allowedMeals)
+													+ excess(parking.total(), allowedParking)
+													+ excess(taxi.total(), allowedTaxi)
+													+ excess(lodging.total(), allowedLodging);
 											totalExpenses
 													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
 													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
-											excessLabel
-													.setText(
-															NumberFormat
-																	.getCurrencyInstance()
-																	.format(
-																			excess(meals.total(), allowedMeals)
-																					+ excess(
-																							parking.total(),
-																							allowedParking)
-																					+ excess(taxi.total(), allowedTaxi)
-																					+ excess(
-																							lodging.total(),
-																							allowedLodging)));
+											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
 											savedLabel
 													.setText(
 															NumberFormat
 																	.getCurrencyInstance()
 																	.format(
-																			(excess ? totalAllowed : totalAmount)
+																			(totalAmount - excess)
 																					+ (milesDriven.total() * .4)));
 										})))));
 		primaryStage.setTitle("Travel expenses");
