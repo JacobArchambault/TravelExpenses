@@ -23,31 +23,17 @@ public class App extends Application {
 
 	// Fully covered expenses
 	NumberInput airFare = new NumberInput();
-	NumberInput carRental = new NumberInput();
-	NumberInput registration = new NumberInput();
-
 	NumberInput tripDays = new NumberInput();
-	// Per diem expenses
-	NumberInput meals = new NumberInput();
-	NumberInput parking = new NumberInput();
-	NumberInput taxi = new NumberInput();
-	NumberInput lodging = new NumberInput();
+	DailyAllowances allowances = new DailyAllowances(tripDays, List.of(47, 20, 40, 195));
+	AmountLabel allowedLabel = new AmountLabel(allowances);
 
-	NumberInput milesDriven = new NumberInput();
-
+	NumberInput carRental = new NumberInput();
+	Label excessLabel = new Label();
+	NumberInput registration = new NumberInput();
 	Expenses expenses = new Expenses(
 			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
-	Expenses perDiemExpenses = new Expenses(
-			List
-					.of(
-							new BasicExpense(meals),
-							new BasicExpense(parking),
-							new BasicExpense(taxi),
-							new BasicExpense(lodging)));
-	DailyAllowances allowances = new DailyAllowances(tripDays, List.of(47, 20, 40, 195));
 	AmountLabel totalExpenses = new AmountLabel(expenses);
-	AmountLabel allowedLabel = new AmountLabel(allowances);
-	Label excessLabel = new Label();
+	NumberInput milesDriven = new NumberInput();
 	AmountLabel savedLabel = new AmountLabel(milesDriven);
 	LabelGrid labelGrid = new LabelGrid(
 			new Label("Total expenses: "),
@@ -58,6 +44,20 @@ public class App extends Application {
 			allowedLabel,
 			excessLabel,
 			savedLabel);
+	NumberInput lodging = new NumberInput();
+
+	// Per diem expenses
+	NumberInput meals = new NumberInput();
+
+	NumberInput parking = new NumberInput();
+	NumberInput taxi = new NumberInput();
+	Expenses perDiemExpenses = new Expenses(
+			List
+					.of(
+							new BasicExpense(meals),
+							new BasicExpense(parking),
+							new BasicExpense(taxi),
+							new BasicExpense(lodging)));
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {
@@ -96,41 +96,45 @@ public class App extends Application {
 														milesDriven)),
 										labelGrid,
 										new HBox(new EventButton("Calculate", e -> {
-											var basicAmount = expenses.total();
-											var mealsTotal = meals.total();
-											var parkingTotal = parking.total();
-											var taxiTotal = taxi.total();
-											var lodgingTotal = lodging.total();
-											var tripDaysTotal = tripDays.total();
-											var allowedMeals = tripDaysTotal * 47;
-											var allowedParking = tripDaysTotal * 20;
-											var allowedTaxi = tripDaysTotal * 40;
-											var allowedLodging = tripDaysTotal * 195;
-											var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
+											final var basicAmount = expenses.total();
+											final var mealsTotal = meals.total();
+											final var parkingTotal = parking.total();
+											final var taxiTotal = taxi.total();
+											final var lodgingTotal = lodging.total();
+											final var tripDaysTotal = tripDays.total();
+											final var allowedMeals = tripDaysTotal * 47;
+											final var allowedParking = tripDaysTotal * 20;
+											final var allowedTaxi = tripDaysTotal * 40;
+											final var allowedLodging = tripDaysTotal * 195;
+											final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
 													+ lodgingTotal;
-											double excess = excess(mealsTotal, allowedMeals)
+											final var excess = excess(mealsTotal, allowedMeals)
 													+ excess(parkingTotal, allowedParking)
 													+ excess(taxiTotal, allowedTaxi)
 													+ excess(lodgingTotal, allowedLodging);
 											totalExpenses
 													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
 											allowedLabel
-													.setText(NumberFormat.getCurrencyInstance().format(basicAmount + allowedMeals + allowedParking + allowedTaxi
-															+ allowedLodging));
+													.setText(
+															NumberFormat
+																	.getCurrencyInstance()
+																	.format(
+																			basicAmount + allowedMeals + allowedParking
+																					+ allowedTaxi + allowedLodging));
 											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
 											savedLabel
 													.setText(
 															NumberFormat
 																	.getCurrencyInstance()
 																	.format(
-																			(totalAmount - excess)
-																					+ (milesDriven.total() * .4)));
+																			totalAmount - excess
+																					+ milesDriven.total() * .4));
 										})))));
 		primaryStage.setTitle("Travel expenses");
 		primaryStage.show();
 	}
 
-	private double excess(double total, double allowed) {
+	private double excess(final double total, final double allowed) {
 		return total > allowed ? total - allowed : 0;
 	}
 

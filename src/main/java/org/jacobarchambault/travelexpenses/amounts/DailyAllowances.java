@@ -2,21 +2,22 @@ package org.jacobarchambault.travelexpenses.amounts;
 
 import java.util.List;
 
-public class DailyAllowances implements Amount{
+public class DailyAllowances implements Amount {
 
-	NumberInput tripDays;
 	List<Integer> maxAllowedList;
+	NumberInput tripDays;
 
-	public DailyAllowances(NumberInput tripDays, List<Integer> maxAllowedList) {
+	public DailyAllowances(final NumberInput tripDays, final List<Integer> maxAllowedList) {
 		this.tripDays = tripDays;
 		this.maxAllowedList = maxAllowedList;
 	}
 
+	@Override
 	public double total() {
-		int days = days();
-		int allowed = 0;
-		for (int i : maxAllowedList) {
-			allowed += (i * days);
+		final var days = days();
+		var allowed = 0;
+		for (final int i : maxAllowedList) {
+			allowed += i * days;
 		}
 		return allowed;
 	}
@@ -25,7 +26,7 @@ public class DailyAllowances implements Amount{
 		int days;
 		try {
 			days = Integer.parseInt(tripDays.getText());
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 			days = 0;
 		}
 		return days;

@@ -15,7 +15,7 @@ public class NumberInput extends TextField implements Amount {
 	public double total() {
 		try {
 			return Double.parseDouble(this.getText());
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 			return 0;
 		}
 	}

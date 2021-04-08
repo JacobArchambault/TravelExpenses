@@ -5,13 +5,14 @@ import java.util.List;
 public class Expenses implements Amount {
 	List<Amount> list;
 
-	public Expenses(List<Amount> list) {
+	public Expenses(final List<Amount> list) {
 		this.list = list;
 	}
 
+	@Override
 	public double total() {
-		int sum = 0;
-		for (var expense : list) {
+		var sum = 0;
+		for (final var expense : list) {
 			sum += expense.total();
 		}
 		return sum;

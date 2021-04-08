@@ -7,14 +7,14 @@ import javafx.scene.layout.GridPane;
 public class LabelGrid extends GridPane {
 
 	public LabelGrid(
-			Label label,
-			Label label2,
-			Label label3,
-			Label label4,
-			Label label5,
-			Label label6,
-			Label label7,
-			Label label8) {
+			final Label label,
+			final Label label2,
+			final Label label3,
+			final Label label4,
+			final Label label5,
+			final Label label6,
+			final Label label7,
+			final Label label8) {
 		add(label, 0, 0);
 		add(label2, 0, 1);
 		add(label3, 0, 2);

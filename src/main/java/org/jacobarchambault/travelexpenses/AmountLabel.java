@@ -10,12 +10,12 @@ public class AmountLabel extends Label {
 
 	Amount expenses;
 
-	AmountLabel(Amount expenses) {
+	AmountLabel(final Amount expenses) {
 		this.expenses = expenses;
 	}
 
 	void display() {
-		this.setText(NumberFormat.getCurrencyInstance().format(expenses.total()));
+		setText(NumberFormat.getCurrencyInstance().format(expenses.total()));
 	}
 
 }

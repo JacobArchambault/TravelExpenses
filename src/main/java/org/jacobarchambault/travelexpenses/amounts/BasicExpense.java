@@ -6,14 +6,15 @@ public class BasicExpense implements Amount {
 
 	TextField tf;
 
-	public BasicExpense(TextField tf) {
+	public BasicExpense(final TextField tf) {
 		this.tf = tf;
 	}
 
+	@Override
 	public double total() {
 		try {
 			return Integer.parseInt(tf.getText());
-		} catch (Exception ex) {
+		} catch (final Exception ex) {
 			return 0;
 		}
 	}

@@ -7,14 +7,14 @@ public class Allowances implements Amount {
 	List<Amount> basicExpenses;
 	DailyAllowances dailyAllowances;
 
-	public Allowances(List<Amount> basicExpenses, DailyAllowances dailyAllowances) {
+	public Allowances(final List<Amount> basicExpenses, final DailyAllowances dailyAllowances) {
 		this.basicExpenses = basicExpenses;
 		this.dailyAllowances = dailyAllowances;
 	}
 
 	public double total() {
-		double allowed = dailyAllowances.total();
-		for (Amount e : basicExpenses) {
+		var allowed = dailyAllowances.total();
+		for (final Amount e : basicExpenses) {
 			allowed += e.total();
 		}
 		return allowed;

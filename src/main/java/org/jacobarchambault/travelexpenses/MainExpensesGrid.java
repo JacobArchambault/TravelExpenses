@@ -7,12 +7,12 @@ import javafx.scene.layout.GridPane;
 
 public class MainExpensesGrid extends GridPane {
 	MainExpensesGrid(
-			Label label,
-			TextField textBox,
-			Label label2,
-			TextField textBox2,
-			Label label3,
-			TextField textBox3) {
+			final Label label,
+			final TextField textBox,
+			final Label label2,
+			final TextField textBox2,
+			final Label label3,
+			final TextField textBox3) {
 		add(label, 0, 0);
 		add(textBox, 1, 0);
 		add(label2, 0, 1);
