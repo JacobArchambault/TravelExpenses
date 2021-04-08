@@ -98,7 +98,6 @@ public class App extends Application {
 										new HBox(new EventButton("Calculate", e -> {
 											var basicAmount = expenses.total();
 											var perDiemAmount = perDiemExpenses.total();
-											var allowedAmount = allowances.total();
 											var tripDaysTotal = tripDays.total();
 											var excessAmount = 0;
 											var mealsTotal = meals.total();
@@ -121,6 +120,8 @@ public class App extends Application {
 											if (lodgingTotal > (allowedLodging)) {
 												excessAmount += (lodgingTotal - allowedLodging);
 											}
+											var allowedAmount = allowedMeals + allowedParking + allowedTaxi
+													+ allowedLodging;
 											var totalAmount = basicAmount + perDiemAmount;
 											var totalAllowed = basicAmount + allowedAmount;
 											boolean excess = perDiemAmount > allowedAmount;
