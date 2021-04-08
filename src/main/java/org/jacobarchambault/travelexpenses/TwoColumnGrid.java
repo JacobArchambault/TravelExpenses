@@ -4,7 +4,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Control;
 import javafx.scene.layout.GridPane;
 
-public class TwoColumnGrid extends GridPane {
+class TwoColumnGrid extends GridPane {
 
 	TwoColumnGrid(final Control[] controls) {
 		for (var i = 0; i < controls.length; i++) {

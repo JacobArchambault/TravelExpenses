@@ -21,20 +21,20 @@ public class App extends Application {
 		Application.launch(args);
 	}
 
-	NumberInput airFare = new NumberInput();
-	CurrencyLabel allowedLabel = new CurrencyLabel();
-	NumberInput carRental = new NumberInput();
-	CurrencyLabel excessLabel = new CurrencyLabel();
-	NumberInput registration = new NumberInput();
-	Expenses expenses = new Expenses(List.of(airFare, carRental, registration));
-	NumberInput lodging = new NumberInput();
-	NumberInput meals = new NumberInput();
-	NumberInput milesDriven = new NumberInput();
-	NumberInput parking = new NumberInput();
-	SavedLabel savedLabel = new SavedLabel(milesDriven);
-	NumberInput taxi = new NumberInput();
-	CurrencyLabel totalExpenses = new CurrencyLabel();
-	NumberInput tripDays = new NumberInput();
+	private NumberInput airFare = new NumberInput();
+	private CurrencyLabel allowedLabel = new CurrencyLabel();
+	private NumberInput carRental = new NumberInput();
+	private CurrencyLabel excessLabel = new CurrencyLabel();
+	private NumberInput registration = new NumberInput();
+	private Expenses expenses = new Expenses(List.of(airFare, carRental, registration));
+	private NumberInput lodging = new NumberInput();
+	private NumberInput meals = new NumberInput();
+	private NumberInput milesDriven = new NumberInput();
+	private NumberInput parking = new NumberInput();
+	private SavedLabel savedLabel = new SavedLabel(milesDriven);
+	private NumberInput taxi = new NumberInput();
+	private CurrencyLabel totalExpenses = new CurrencyLabel();
+	private NumberInput tripDays = new NumberInput();
 
 	@Override
 	public void start(final Stage primaryStage) throws Exception {

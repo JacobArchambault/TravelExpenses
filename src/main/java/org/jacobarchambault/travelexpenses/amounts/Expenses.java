@@ -3,7 +3,7 @@ package org.jacobarchambault.travelexpenses.amounts;
 import java.util.List;
 
 public class Expenses implements Amount {
-	List<Amount> list;
+	private List<Amount> list;
 
 	public Expenses(final List<Amount> list) {
 		this.list = list;
