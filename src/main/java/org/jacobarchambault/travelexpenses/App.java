@@ -83,17 +83,17 @@ public class App extends Application {
 		final var taxiTotal = taxi.total();
 		final var lodgingTotal = lodging.total();
 		final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal + lodgingTotal;
-		totalExpenses.display(totalAmount);
+		totalExpenses.show(totalAmount);
 		final var tripDaysTotal = tripDays.total();
 		final var allowedMeals = tripDaysTotal * 47;
 		final var allowedParking = tripDaysTotal * 20;
 		final var allowedTaxi = tripDaysTotal * 40;
 		final var allowedLodging = tripDaysTotal * 195;
-		allowedLabel.display(basicAmount + allowedMeals + allowedParking + allowedTaxi + allowedLodging);
+		allowedLabel.show(basicAmount + allowedMeals + allowedParking + allowedTaxi + allowedLodging);
 		final var excess = excess(mealsTotal, allowedMeals) + excess(parkingTotal, allowedParking)
 				+ excess(taxiTotal, allowedTaxi) + excess(lodgingTotal, allowedLodging);
-		excessLabel.display(excess);
-		savedLabel.display(totalAmount, excess);
+		excessLabel.show(excess);
+		savedLabel.show(totalAmount - excess);
 	}
 
 	private double excess(final double total, final double allowed) {
