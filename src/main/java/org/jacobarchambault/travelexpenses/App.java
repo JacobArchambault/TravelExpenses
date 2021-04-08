@@ -24,14 +24,14 @@ public class App extends Application {
 	// Fully covered expenses
 	NumberInput airFare = new NumberInput();
 	NumberInput tripDays = new NumberInput();
-	Label allowedLabel = new Label();
+	CurrencyLabel allowedLabel = new CurrencyLabel();
 
 	NumberInput carRental = new NumberInput();
-	Label excessLabel = new Label();
+	CurrencyLabel excessLabel = new CurrencyLabel();
 	NumberInput registration = new NumberInput();
 	Expenses expenses = new Expenses(
 			List.of(new BasicExpense(airFare), new BasicExpense(carRental), new BasicExpense(registration)));
-	Label totalExpenses = new Label();
+	CurrencyLabel totalExpenses = new CurrencyLabel();
 	NumberInput milesDriven = new NumberInput();
 	SavedLabel savedLabel = new SavedLabel(milesDriven);
 	NumberInput lodging = new NumberInput();
@@ -85,25 +85,21 @@ public class App extends Application {
 											final var lodgingTotal = lodging.total();
 											final var totalAmount = basicAmount + mealsTotal + parkingTotal + taxiTotal
 													+ lodgingTotal;
-											totalExpenses
-													.setText(NumberFormat.getCurrencyInstance().format(totalAmount));
+											totalExpenses.display(totalAmount);
 											final var tripDaysTotal = tripDays.total();
 											final var allowedMeals = tripDaysTotal * 47;
 											final var allowedParking = tripDaysTotal * 20;
 											final var allowedTaxi = tripDaysTotal * 40;
 											final var allowedLodging = tripDaysTotal * 195;
 											allowedLabel
-													.setText(
-															NumberFormat
-																	.getCurrencyInstance()
-																	.format(
-																			basicAmount + allowedMeals + allowedParking
-																					+ allowedTaxi + allowedLodging));
+													.display(
+															basicAmount + allowedMeals + allowedParking + allowedTaxi
+																	+ allowedLodging);
 											final var excess = excess(mealsTotal, allowedMeals)
 													+ excess(parkingTotal, allowedParking)
 													+ excess(taxiTotal, allowedTaxi)
 													+ excess(lodgingTotal, allowedLodging);
-											excessLabel.setText(NumberFormat.getCurrencyInstance().format(excess));
+											excessLabel.display(excess);
 											savedLabel.display(totalAmount, excess);
 										})))));
 		primaryStage.setTitle("Travel expenses");
