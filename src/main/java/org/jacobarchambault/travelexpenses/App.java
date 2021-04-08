@@ -99,6 +99,28 @@ public class App extends Application {
 											var basicAmount = expenses.total();
 											var perDiemAmount = perDiemExpenses.total();
 											var allowedAmount = allowances.total();
+											var tripDaysTotal = tripDays.total();
+											var excessAmount = 0;
+											var mealsTotal = meals.total();
+											var allowedMeals = tripDaysTotal * 47;
+											if (mealsTotal > (allowedMeals)) {
+												excessAmount += (mealsTotal - allowedMeals);
+											}
+											var parkingTotal = parking.total();
+											var allowedParking = tripDaysTotal * 20;
+											if (parkingTotal > (allowedParking)) {
+												excessAmount += (parkingTotal - allowedParking);
+											}
+											var taxiTotal = taxi.total();
+											var allowedTaxi = tripDaysTotal * 40;
+											if (taxiTotal > (allowedTaxi)) {
+												excessAmount += (taxiTotal - allowedTaxi);
+											}
+											var lodgingTotal = lodging.total();
+											var allowedLodging = tripDaysTotal * 195;
+											if (lodgingTotal > (allowedLodging)) {
+												excessAmount += (lodgingTotal - allowedLodging);
+											}
 											var totalAmount = basicAmount + perDiemAmount;
 											var totalAllowed = basicAmount + allowedAmount;
 											boolean excess = perDiemAmount > allowedAmount;
@@ -107,12 +129,7 @@ public class App extends Application {
 											allowedLabel
 													.setText(NumberFormat.getCurrencyInstance().format(totalAllowed));
 											excessLabel
-													.setText(
-															NumberFormat
-																	.getCurrencyInstance()
-																	.format(
-																			excess ? perDiemAmount - allowedAmount
-																					: 0));
+													.setText(NumberFormat.getCurrencyInstance().format(excessAmount));
 											savedLabel
 													.setText(
 															NumberFormat
