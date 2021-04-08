@@ -14,6 +14,7 @@ public class SavedLabel extends Label implements Display<Double> {
 		this.milesDriven = milesDriven;
 	}
 
+	@Override
 	public void show(final Double amount) {
 		setText(NumberFormat.getCurrencyInstance().format(amount + milesDriven.total() * .4));
 	}
